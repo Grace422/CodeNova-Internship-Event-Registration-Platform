@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import AdminDashboard from "./AdminDashboard";
 import "./App.css";
 
 const API_URL = "http://localhost:5000/api/events";
@@ -20,6 +21,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [showAdmin, setShowAdmin] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -141,6 +143,18 @@ function App() {
       setSubmitting(false);
     }
   };
+
+  const isAdminPage = window.location.pathname === "/admin";
+  if (isAdminPage) {
+    return (
+      <AdminDashboard
+        events={events}
+        onBack={() => {
+          window.location.href = "/";
+        }}
+      />
+    );
+  }
 
   return (
     <div className="app">
