@@ -124,3 +124,41 @@ app.post("/api/registrations", async (req, res) => {
     });
   }
 });
+
+
+app.get("/api/admin/registrations", async (req, res) => {
+  try {
+    const search = (req.query.search || "").trim();
+
+    const result = await pool.query(
+      `SELECT
+        r.id,
+        r.event_id,
+        r.name,
+        r.email,
+        r.college,
+        r.domain_interests,
+        r.status,
+        r.registered_at,
+        e.title AS event_title,
+        e.event_date
+      FROM registrations r
+      JOIN events e ON r.event_id = e.id
+      WHERE
+        r.name ILIKE $1 OR
+        r.email ILIKE $1 OR
+        r.college ILIKE $1 OR
+        e.title ILIKE $1
+      ORDER BY r.registered_at DESC`,
+      [`%${search}%`]
+    );
+
+    res.json(result.rows);
+  } catch (error) {
+    console.error("Error fetching admin registrations:", error);
+
+    res.status(500).json({
+      message: "Failed to retrieve registrations.",
+    });
+  }
+});
