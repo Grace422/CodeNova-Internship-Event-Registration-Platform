@@ -181,18 +181,18 @@ function App() {
             return (
               <article className="event-card" key={event.id}>
                 <h3>{event.title}</h3>
-                <p>{event.description}</p>
+                <p className="event-description">{event.description}</p>
 
-                <p>
+                <p className="event-details">
                   <strong>Date:</strong>{" "}
                   {new Date(event.event_date).toLocaleString()}
                 </p>
 
-                <p>
+                <p className="event-details">
                   <strong>Capacity:</strong> {event.capacity}
                 </p>
 
-                <p>
+                <p className="event-details">
                   <strong>Registered:</strong>{" "}
                   {event.registration_count} / {event.capacity}
                 </p>
