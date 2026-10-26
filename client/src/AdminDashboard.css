@@ -16,6 +16,7 @@
 .admin-heading h2 {
   margin: 6px 0;
   font-size: 30px;
+  color: black;
 }
 
 .admin-heading p,
@@ -32,7 +33,7 @@
 
 .admin-back-button {
   padding: 11px 16px;
-  background: #374151;
+  background-color: #374151;
   color: white;
   border: none;
   border-radius: 6px;
@@ -82,6 +83,9 @@
   border: 1px solid #d1d5db;
   border-radius: 6px;
   font: inherit;
+  background-color: transparent;
+  color: black;
+  outline: 1px solid blue;
 }
 
 .admin-result-count {
