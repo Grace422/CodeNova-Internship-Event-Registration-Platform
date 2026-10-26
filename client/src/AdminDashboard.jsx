@@ -1,8 +1,7 @@
-
 import { useEffect, useMemo, useState } from "react";
 import "./AdminDashboard.css";
 
-const API_URL = `${import.meta.env.VITE_API_URL}/api/events`;
+const API_URL = `${import.meta.env.VITE_API_URL}/api/admin`;
 
 function AdminDashboard({ events, onBack }) {
   const [token, setToken] = useState(
