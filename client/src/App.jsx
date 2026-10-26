@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import AdminDashboard from "./AdminDashboard";
 import "./App.css";
 
-const API_URL = "http://localhost:5000/api/events";
-const REGISTRATION_URL = "http://localhost:5000/api/registrations";
+const API_URL = `${import.meta.env.VITE_API_URL}/api/events`;
+const REGISTRATION_URL = `${import.meta.env.VITE_API_URL}/api/registrations`;
 
 const DOMAIN_OPTIONS = [
   "Web Development",
