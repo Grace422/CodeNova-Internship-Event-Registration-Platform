@@ -130,11 +130,6 @@ app.get("/api/events", async (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
-});
-
-
 app.post("/api/registrations", async (req, res) => {
   try {
     const { event_id, name, email, college, domain_interests } = req.body;
@@ -250,3 +245,11 @@ app.get("/api/admin/registrations", requireAdmin, async (req, res) => {
     });
   }
 });
+
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;
